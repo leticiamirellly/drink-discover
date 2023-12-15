@@ -14,6 +14,8 @@ Certifique-se de ter o Node.js e o PostgreSQL instalados em seu sistema antes de
 git clone https://github.com/seu-usuario/drink-discover-api.git
 cd drink-discover-api
 npm install
+```
+
 
 ## Configuração
 
@@ -26,16 +28,19 @@ PG_PORT=5432
 PG_USER=seu-usuario
 PG_PASSWORD=sua-senha
 PG_DB_NAME=drink
+```
 
 Execute as migrações do banco de dados:
 
 ```bash
 npm run db:reset
+```
 
 ## Uso
 
 ```bash
 npm run dev
+```
 
 Acesse a documentação Swagger:
 
