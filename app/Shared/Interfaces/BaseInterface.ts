@@ -13,13 +13,7 @@ export default interface BaseInterface<Model extends LucidModel> extends Helpers
 
   store(values: Partial<ModelAttributes<InstanceType<Model>>>): Promise<InstanceType<Model>>
 
-
-  storeMany(values: Array<ModelType<Model>>): Promise<Array<InstanceType<Model>>>
-
-  save<T extends InstanceType<Model>>(model: T): Promise<T>
 }
-
-
 interface Helpers<Model extends LucidModel> {
   listWithPagination(params: PaginateParams<Model>): Promise<PaginateContractType<Model>>
   findBy(
