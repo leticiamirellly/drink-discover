@@ -17,16 +17,6 @@ export default class CategoryController {
        return response.json(result)
     }
 
-    public async get({ params, response }: HttpContextContract): Promise<void> {
-        const { id: categoryId } = params
-    
-        const getCategory = container.resolve(GetCategoryByIdService)
-        const category = await getCategory.init(categoryId)
-    
-        return response.json(category)
-    }
-
-
     public async store(ctx: HttpContextContract) {
         const categoryDTO = await ctx.request.validate(StoreCategoryValidator).catch((error) => {
             throw new AppException(error, StatusCodes.BAD_REQUEST)
