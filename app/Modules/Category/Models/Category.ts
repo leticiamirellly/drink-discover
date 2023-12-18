@@ -6,7 +6,7 @@ export default class Category extends BaseModel {
   public static selfAssignPrimaryKey = true
 
   @column({ isPrimary: true })
-  public id: number
+  public id: string
 
   @column()
   public name: string

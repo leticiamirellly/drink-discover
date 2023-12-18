@@ -6,10 +6,10 @@ export default class Drink extends BaseModel {
   public static selfAssignPrimaryKey = true
 
   @column({ isPrimary: true })
-  public id: number
+  public id: string
 
   @column()
-  public category_id: number
+  public category_id: string
 
   @column()
   public name: string
