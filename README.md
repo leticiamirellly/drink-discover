@@ -4,6 +4,10 @@
 
 Uma API construída com AdonisJS 5 para descoberta de bebidas. Utiliza AdonisJS, PostgreSQL como banco de dados e integração com Swagger para documentação da API.
 
+## Diagrama do bando de dados
+
+![image](https://github.com/leticiamirellly/drink-discover/assets/48611221/44951bea-28fe-4fb2-afcc-cba341496319)
+
 ## Pré-requisitos
 
 Certifique-se de ter o Node.js e o PostgreSQL instalados em seu sistema antes de prosseguir.
