@@ -19,7 +19,7 @@ export default Env.rules({
   PORT: Env.schema.number.optional(),
   APP_KEY: Env.schema.string(),
   APP_NAME: Env.schema.string(),
-  DRIVE_DISK: Env.schema.enum(['local'] as const),
+  DRIVE_DISK: Env.schema.enum.optional(['local'] as const),
   
   
   PG_HOST: Env.schema.string({ format: 'host' }),
