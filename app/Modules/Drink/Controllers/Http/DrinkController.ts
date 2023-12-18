@@ -4,7 +4,8 @@ import { StatusCodes } from 'http-status-codes'
 import AppException from 'App/Shared/Exceptions/AppException';
 import { StoreDrinkService } from '../../Services/StoreDrinkService';
 import StoreDrinkValidator from '../../Validators/StoreDrinkValidator';
-import { GetDrinkByNameService } from '../../Services/GetDrinksByName';
+import { GetDrinkByNameService } from '../../Services/GetDrinksByNameService';
+import { GetDrinkByCategoryIdService } from '../../Services/GetDrinkByCategoryIdService';
 
 
 export default class DrinkController {
@@ -16,6 +17,15 @@ export default class DrinkController {
         const category = await getDrinks.init(drinkName)
     
         return response.json(category)
+    }
+
+    public async get({ response, request }: HttpContextContract): Promise<void> {
+        const categoryId = request.qs().category_id
+
+        const getDrinks= container.resolve(GetDrinkByCategoryIdService)
+        const result = await getDrinks.init(categoryId)
+    
+        return response.json(result)
     }
 
     public async store(ctx: HttpContextContract) {
