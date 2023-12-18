@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe'
 
-import { ICategory } from '../../Interfaces/CategoryInterface'
-import Category from '../../Models/Category'
+import { ICategory } from '../Interfaces/CategoryInterface'
+import Category from '../Models/Category'
 import DTO = ICategory.DTO
 
 @injectable()
