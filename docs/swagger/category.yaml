@@ -1,8 +1,41 @@
 /api/category:
+  get:
+    tags:
+      - Category
+    description: Get a list of categories
+    parameters:
+      - name: page
+        in: query
+        description: Page number
+        required: false
+        schema:
+          type: integer
+          example: 1
+      - name: perPage
+        in: query
+        description: Number of items per page
+        required: false
+        schema:
+          type: integer
+          example: 10
+    produces:
+      - application/json
+    responses:
+      200:
+        description: List of categories
+        content:
+          application/json:
+            example:
+              categories:
+                - id: 1
+                  name: Juice
+                - id: 2
+                  name: Soda
+
   post:
     tags:
       - Category
-    description: Category
+    description: Create a new category
     requestBody:
       required: true
       content:
