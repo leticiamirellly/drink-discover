@@ -11,6 +11,9 @@
     "format": "prettier --write .",
     "db:reset": "node ace migration:rollback &&  node ace migration:run --dry-run && node ace db:seed"
   },
+  "engines": {
+    "node": "18.7.0"
+  },
   "eslintConfig": {
     "extends": [
       "plugin:adonis/typescriptApp",
