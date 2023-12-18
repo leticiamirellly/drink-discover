@@ -1,0 +1,112 @@
+/api/drink/{name}:
+  get:
+    tags:
+      - Drinks
+    description: Get drinks by name
+    parameters:
+      - name: name
+        in: path
+        description: Name of the drink
+        required: true
+        schema:
+          type: string
+    produces:
+      - application/json
+    responses:
+      200:
+        description: List of drinks by name
+        content:
+          application/json:
+            example:
+              drinks:
+                - name: Drink1
+                  description: Description1
+                  image: Image1
+                - name: Drink2
+                  description: Description2
+                  image: Image2
+      404:
+        description: No drinks found for the specified name
+        content:
+          application/json:
+            example:
+              message: No drinks found for the specified name
+
+/api/drink:
+  get:
+    tags:
+      - Drinks
+    description: Get drinks by category ID
+    parameters:
+      - name: category_id
+        in: query
+        description: ID of the category
+        required: true
+        schema:
+          type: integer
+    produces:
+      - application/json
+    responses:
+      200:
+        description: List of drinks by category ID
+        content:
+          application/json:
+            example:
+              drinks:
+                - name: Drink1
+                  description: Description1
+                  image: Image1
+                - name: Drink2
+                  description: Description2
+                  image: Image2
+      404:
+        description: No drinks found for the specified category ID
+        content:
+          application/json:
+            example:
+              message: No drinks found for the specified category ID
+  post:
+    tags:
+      - Drinks
+    description: Create a new drink
+    requestBody:
+      required: true
+      content:
+        application/json:
+          description: Drink payload
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: DrinkName
+                required: true
+              description:
+                type: string
+                example: DrinkDescription
+                required: true
+              image:
+                type: string
+                example: DrinkImage
+                required: true
+    produces:
+      - application/json
+    responses:
+      201:
+        description: Drink created successfully
+        content:
+          application/json:
+            example:
+              status: success
+              message: Drink created successfully
+              drink:
+                name: DrinkName
+                description: DrinkDescription
+                image: DrinkImage
+      400:
+        description: Error creating drink
+        content:
+          application/json:
+            example:
+              status: error
+              message: Error creating drink
