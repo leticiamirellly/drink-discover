@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
-    "start": "node server.js",
+    "start": "ENV_SILENT=true node server.ts",
     "test": "node ace test",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
@@ -51,6 +51,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "pino-pretty": "^10.2.3",
     "prettier": "^3.1.1",
+    "ts-node": "^10.9.2",
     "typescript": "~4.6",
     "youch": "^3.3.3",
     "youch-terminal": "^2.2.3"

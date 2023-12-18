@@ -1,6 +1,6 @@
 import {HttpContextContract} from '@ioc:Adonis/Core/HttpContext';
 import { container } from 'tsyringe'
-import { GetCategoryByIdService, ListCategoryService, StoreCategoryService } from '../../Services';
+import { ListCategoryService, StoreCategoryService } from '../../Services';
 import StoreCategoryValidator from '../../Validators/Category/StoreCategoryValidator';
 import { StatusCodes } from 'http-status-codes'
 import AppException from 'App/Shared/Exceptions/AppException';

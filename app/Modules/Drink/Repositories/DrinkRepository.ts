@@ -1,4 +1,3 @@
-import { ContextParams, ModelClause } from 'App/Shared/Interfaces/BaseInterface'
 import BaseRepository from '../../../Shared/Repositories/BaseRepository'
 
 import { IDrink } from '../Interfaces/DrinkInterface'

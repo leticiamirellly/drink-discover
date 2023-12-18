@@ -2,9 +2,7 @@ import { inject, injectable } from 'tsyringe'
 
 import { ICategory } from '../Interfaces/CategoryInterface'
 import Category from '../Models/Category'
-import { PaginateContractType, PaginateParams } from 'App/Shared/Interfaces/BaseInterface'
-import Drink from 'App/Modules/Drink/Models/Drink'
-
+import { PaginateContractType, PaginateParams } from './../../../../app/Shared/Interfaces/BaseInterface'
 
 @injectable()
 export class ListCategoryService {

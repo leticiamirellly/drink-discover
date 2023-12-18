@@ -1,4 +1,4 @@
-import { BaseModel, BelongsTo, belongsTo, column,   HasMany, hasMany, } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import Category from 'App/Modules/Category/Models/Category';
 
 export default class Drink extends BaseModel {
