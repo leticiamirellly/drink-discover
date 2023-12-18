@@ -5,7 +5,6 @@
     "@adonisjs/core/build/commands/index.js",
     "@adonisjs/repl/build/commands",
     "@adonisjs/lucid/build/commands",
-    "pretty-list-routes/build/commands/PrettyRoute.js",
     "adonis5-swagger/build/commands"
   ],
   "exceptionHandlerNamespace": "App/Shared/Exceptions/Handler",
