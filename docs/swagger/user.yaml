@@ -1,0 +1,80 @@
+/api/user:
+  post:
+    tags:
+      - User
+    description: Create a new user
+    requestBody:
+      required: true
+      content:
+        application/json:
+          description: User payload
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                example: john_doe
+                required: true
+    produces:
+      - application/json
+    responses:
+      201:
+        description: Usuário cadastrado com sucesso
+        content:
+          application/json:
+            example:
+              status: success
+              message: Usuário cadastrado com sucesso!
+              user:
+                id: 1
+                username: john_doe
+      400:
+        description: Erro ao cadastrar usuário
+        content:
+          application/json:
+            example:
+              status: error
+              message: Erro ao cadastrar usuário
+
+/api/user/favorites:
+  post:
+    tags:
+      - User
+    description: Add a drink to favorites
+    requestBody:
+      required: true
+      content:
+        application/json:
+          description: Favorite payload
+          schema:
+            type: object
+            properties:
+              drink_id:
+                type: number
+                example: 1
+                required: true
+              user_id:
+                type: number
+                example: 1
+                required: true
+    produces:
+      - application/json
+    responses:
+      201:
+        description: Drink adicionado aos favoritos
+        content:
+          application/json:
+            example:
+              status: success
+              message: Drink adicionado aos favoritos
+              favorite:
+                id: 1
+                drink_id: 1
+                user_id: 1
+      400:
+        description: Erro ao adicionar drink aos favoritos
+        content:
+          application/json:
+            example:
+              status: error
+              message: Erro ao adicionar drink aos favoritos
