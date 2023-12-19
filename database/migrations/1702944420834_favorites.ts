@@ -1,4 +1,4 @@
-import { Logger } from '@ioc:Adonis/Core/Logger';
+import Logger from '@ioc:Adonis/Core/Logger'
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class extends BaseSchema {

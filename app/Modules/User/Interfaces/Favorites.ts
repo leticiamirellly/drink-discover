@@ -6,8 +6,8 @@ export namespace IFavorites {
 
   export namespace DTO {
     export type Store = {
-      drink_id: string
-      user_id: string
+      drink_id: number
+      user_id: number
     }
   }
 }

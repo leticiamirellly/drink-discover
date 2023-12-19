@@ -10,10 +10,10 @@ export default class Favorites extends BaseModel {
   public id: string
 
   @column()
-  public user_id: string
+  public user_id: number
 
   @column()
-  public drink_id: string
+  public drink_id: number
 
   @belongsTo(() => User, { localKey: 'id', foreignKey: 'user_id' })
   public user: BelongsTo<typeof User>
