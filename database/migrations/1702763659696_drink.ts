@@ -12,7 +12,7 @@ export default class extends BaseSchema {
         table.foreign('category_id').references('category.id').deferrable('deferred')
         table.string('name', 70).notNullable()
         table.string('description', 3000).notNullable()
-        table.string('image', 3000).notNullable()
+        table.string('drink_file').notNullable()
       })
     } else Logger.info('Running migration...')
   }

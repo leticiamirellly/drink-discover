@@ -7,10 +7,10 @@ export default class Drink extends BaseModel {
   public static selfAssignPrimaryKey = true
 
   @column({ isPrimary: true })
-  public id: string
+  public id: number
 
   @column()
-  public category_id: string
+  public category_id: number
 
   @column()
   public name: string
@@ -19,7 +19,7 @@ export default class Drink extends BaseModel {
   public description?: string
 
   @column()
-  public image?: string
+  public drink_file: string
 
   @belongsTo(() => Category, { localKey: 'id', foreignKey: 'category_id' })
   public category: BelongsTo<typeof Category>
