@@ -9,11 +9,11 @@ export class GetDrinkByNameService {
   constructor(
     @inject('DrinkRepository')
     private DrinkRepository: IDrink.Repository
-  ) {}
+  ) { }
 
-  public async init(drinkName: string): Promise<Drink[] | null>{
-    const drinks = await this.DrinkRepository.pluckBy(['name', 'description', 'image'], {like: {column: 'name', match: `%${drinkName}%`} })
-    if (!drinks.length) throw new AppException('Não há drinks cadastrados para essa categoria.')  
+  public async init(drinkName: string): Promise<Drink[] | null> {
+    const drinks = await this.DrinkRepository.pluckBy(['name', 'description', 'drink_file'], { like: { column: 'name', match: `%${drinkName}%` } })
+    if (!drinks.length) throw new AppException('Não há drinks cadastrados para essa categoria.')
     return drinks;
   }
 }

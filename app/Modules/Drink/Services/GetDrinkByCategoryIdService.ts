@@ -12,7 +12,7 @@ export class GetDrinkByCategoryIdService {
   ) { }
 
   public async init(categoryId: number): Promise<Drink[] | null> {
-    const drinks = await this.DrinkRepository.pluckBy(['name', 'description', 'image'], {
+    const drinks = await this.DrinkRepository.pluckBy(['name', 'description', 'drink_file'], {
       where: { category_id: categoryId },
     })
     if (!drinks.length) throw new AppException('Não há drinks cadastrados para essa categoria.')
