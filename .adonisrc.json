@@ -29,7 +29,8 @@
     "@adonisjs/core",
     "@adonisjs/lucid",
     "adonis5-swagger",
-    "@adonisjs/view"
+    "@adonisjs/view",
+    "@adonisjs/drive-gcs"
   ],
   "aceProviders": [
     "@adonisjs/repl"
