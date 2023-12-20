@@ -72,23 +72,30 @@
     requestBody:
       required: true
       content:
-        application/json:
-          description: Drink payload
+        multipart/form-data:
           schema:
             type: object
             properties:
+              category_id:
+                type: integer
+                description: ID of category
+                example: 1
               name:
                 type: string
-                example: DrinkName
-                required: true
+                description: Name of the drink
+                example: Margarita
               description:
                 type: string
-                example: DrinkDescription
-                required: true
+                description: Drink Description
+                example: A Margarita é um coquetel clássico que combina tequila, licor de laranja e suco de limão, servido com gelo em uma borda de sal. Sua mistura equilibrada de sabores cítricos e o toque salgado proporcionam uma experiência refrescante e marcante, tornando-a uma escolha popular em todo o mundo.
               image:
                 type: string
-                example: DrinkImage
-                required: true
+                format: binary
+                description: Drink assets
+            required:
+              - category_id
+              - name
+              - image
     produces:
       - application/json
     responses:
