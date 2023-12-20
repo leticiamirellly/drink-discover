@@ -1,7 +1,7 @@
 import Env from '@ioc:Adonis/Core/Env'
-import { driveConfig } from '@adonisjs/core/build/config'
+import { DriveConfig } from '@ioc:Adonis/Core/Drive'
 
-export default driveConfig({
+const driveConfig: DriveConfig = {
   disks: {
     gcs: {
       driver: 'gcs',
@@ -12,4 +12,6 @@ export default driveConfig({
     },
   },
   disk: 'gcs',
-})
+}
+
+export default driveConfig
