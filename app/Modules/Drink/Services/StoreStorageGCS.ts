@@ -1,5 +1,3 @@
-import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { inject, injectable } from 'tsyringe'
 import Drive from '@ioc:Adonis/Core/Drive'
 import AppException from 'App/Shared/Exceptions/AppException'
 import { MultipartFileContract } from '@ioc:Adonis/Core/BodyParser'

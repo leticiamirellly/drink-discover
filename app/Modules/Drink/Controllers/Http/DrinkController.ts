@@ -30,6 +30,10 @@ export default class DrinkController {
     public async store(ctx: HttpContextContract) {
         const file = ctx.request.file('image')
 
+        if (!file) {
+            throw new AppException('Imagem do drink é campo obrigatório.', StatusCodes.BAD_REQUEST)
+        }
+
         const storeUpload = container.resolve(StoreStorageService)
 
         const uploadedFile = await storeUpload.init(file)
