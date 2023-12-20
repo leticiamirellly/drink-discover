@@ -31,7 +31,7 @@ PG_HOST=127.0.0.1
 PG_PORT=5432
 PG_USER=seu-usuario
 PG_PASSWORD=sua-senha
-PG_DB_NAME=drink
+PG_DB_NAME=
 ```
 
 Execute as migrações do banco de dados:
