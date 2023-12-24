@@ -21,10 +21,10 @@
               drinks:
                 - name: Drink1
                   description: Description1
-                  image: Image1
+                  drink_file: Image1
                 - name: Drink2
                   description: Description2
-                  image: Image2
+                  drink_file: Image2
       404:
         description: No drinks found for the specified name
         content:
@@ -55,10 +55,10 @@
               drinks:
                 - name: Drink1
                   description: Description1
-                  image: Image1
+                  drink_file: Image1
                 - name: Drink2
                   description: Description2
-                  image: Image2
+                  drink_file: Image2
       404:
         description: No drinks found for the specified category ID
         content:
@@ -88,7 +88,7 @@
                 type: string
                 description: Drink Description
                 example: A Margarita é um coquetel clássico que combina tequila, licor de laranja e suco de limão, servido com gelo em uma borda de sal. Sua mistura equilibrada de sabores cítricos e o toque salgado proporcionam uma experiência refrescante e marcante, tornando-a uma escolha popular em todo o mundo.
-              image:
+              drink_file:
                 type: string
                 format: binary
                 description: Drink assets
@@ -109,7 +109,7 @@
               drink:
                 name: DrinkName
                 description: DrinkDescription
-                image: DrinkImage
+                drink_file: DrinkImage
       400:
         description: Error creating drink
         content:
