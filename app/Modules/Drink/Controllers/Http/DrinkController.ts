@@ -28,7 +28,7 @@ export default class DrinkController {
   }
 
   public async store(ctx: HttpContextContract) {
-    const file = ctx.request.file('drink_file')!
+    const file = ctx.request.file('image')!
 
     if (!file) {
       throw new AppException('Imagem do drink é campo obrigatório.', StatusCodes.BAD_REQUEST)
@@ -44,13 +44,14 @@ export default class DrinkController {
 
     ctx.request.updateBody({
         ...ctx.request.body(),
-        drink_file: `${uploadedFile}`,
+        drink_file: uploadedFile,
     })
-    console.log(ctx.request.body())
 
+    console.log(ctx.request.body())
     const drinkDTO = await ctx.request.validate(StoreDrinkValidator).catch((error) => {
         throw new AppException(error, StatusCodes.BAD_REQUEST)
     })
+
 
     const storeDrink = container.resolve(StoreDrinkService)
     const drink = await storeDrink.init(drinkDTO)

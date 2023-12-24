@@ -9,7 +9,7 @@ export class StoreStorageService {
     try {
       await file.moveToDisk('./', { name: `${file.clientName}` })
       try {
-        return await Drive.getSignedUrl(`${file.clientName}`)
+        return await Drive.getUrl(`${file.clientName}`)
       } catch (error) {
         throw new AppException('Erro ao retornar imagem salva.')
       }
