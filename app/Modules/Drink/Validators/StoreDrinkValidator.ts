@@ -21,7 +21,7 @@ export default class StoreDrinkValidator {
       }),
     ]),
     description: schema.string({ escape: true, trim: true }, []),
-    drink_file: schema.string(),
+    drink_file: schema.string({ escape: true, trim: true }, []),
   })
 
   public messages = {}

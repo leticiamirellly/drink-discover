@@ -9,52 +9,53 @@ import { GetDrinkByCategoryIdService } from '../../Services/GetDrinkByCategoryId
 import { StoreStorageService } from '../../Services/StoreStorageGCS'
 
 export default class DrinkController {
-    public async getDrinkByName({ response, params }: HttpContextContract): Promise<void> {
-        const { name: drinkName } = params
+  public async getDrinkByName({ response, params }: HttpContextContract): Promise<void> {
+    const { name: drinkName } = params
 
-        const getDrinks = container.resolve(GetDrinkByNameService)
-        const category = await getDrinks.init(drinkName)
+    const getDrinks = container.resolve(GetDrinkByNameService)
+    const category = await getDrinks.init(drinkName)
 
-        return response.json(category)
+    return response.json(category)
+  }
+
+  public async get({ response, request }: HttpContextContract): Promise<void> {
+    const categoryId = request.qs().category_id
+
+    const getDrinks = container.resolve(GetDrinkByCategoryIdService)
+    const result = await getDrinks.init(categoryId)
+
+    return response.json(result)
+  }
+
+  public async store(ctx: HttpContextContract) {
+    const file = ctx.request.file('drink_file')!
+
+    if (!file) {
+      throw new AppException('Imagem do drink é campo obrigatório.', StatusCodes.BAD_REQUEST)
     }
 
-    public async get({ response, request }: HttpContextContract): Promise<void> {
-        const categoryId = request.qs().category_id
+    const storeUpload = container.resolve(StoreStorageService)
 
-        const getDrinks = container.resolve(GetDrinkByCategoryIdService)
-        const result = await getDrinks.init(categoryId)
+    const uploadedFile = await storeUpload.init(file)
 
-        return response.json(result)
+    if (!uploadedFile) {
+      throw new AppException('Erro ao salvar a imagem', StatusCodes.SERVICE_UNAVAILABLE)
     }
 
-    public async store(ctx: HttpContextContract) {
-        const file = ctx.request.file('image')
+    ctx.request.updateBody({
+        ...ctx.request.body(),
+        drink_file: `${uploadedFile}`,
+    })
+    console.log(ctx.request.body())
 
-        if (!file) {
-            throw new AppException('Imagem do drink é campo obrigatório.', StatusCodes.BAD_REQUEST)
-        }
+    const drinkDTO = await ctx.request.validate(StoreDrinkValidator).catch((error) => {
+        throw new AppException(error, StatusCodes.BAD_REQUEST)
+    })
 
-        const storeUpload = container.resolve(StoreStorageService)
+    const storeDrink = container.resolve(StoreDrinkService)
+    const drink = await storeDrink.init(drinkDTO)
 
-        const uploadedFile = await storeUpload.init(file)
-
-        if (!uploadedFile) {
-            throw new AppException('Erro ao salvar a imagem', StatusCodes.SERVICE_UNAVAILABLE)
-        }
-
-        ctx.request.updateBody({
-            ...ctx.request.body(),
-            drink_file: `${uploadedFile}`,
-        })
-
-        const drinkDTO = await ctx.request.validate(StoreDrinkValidator).catch((error) => {
-            throw new AppException(error, StatusCodes.BAD_REQUEST)
-        })
-
-        const storeDrink = container.resolve(StoreDrinkService)
-        const drink = await storeDrink.init(drinkDTO)
-
-        const data = { message: 'Drink cadastrado com sucesso!', drink }
-        return ctx.response.status(201).json(data)
-    }
+    const data = { message: 'Drink cadastrado com sucesso!', drink }
+    return ctx.response.status(201).json(data)
+  }
 }
