@@ -46,8 +46,6 @@ export default class DrinkController {
         ...ctx.request.body(),
         drink_file: uploadedFile,
     })
-
-    console.log(ctx.request.body())
     const drinkDTO = await ctx.request.validate(StoreDrinkValidator).catch((error) => {
         throw new AppException(error, StatusCodes.BAD_REQUEST)
     })
